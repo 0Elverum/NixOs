@@ -5,8 +5,8 @@
     config = {
       user.name = "Elverum";
       user.email = "elverum7@proton.me";
-      core.editor = "code";
-      safe.directory = "/etc/nixos";
+      core.editor = "nano";
+      credential.helper = "store";
       };
   };
 }
