@@ -11,6 +11,7 @@
       ./git.nix
       ./vscode.nix
       ./apps.nix
+#      ./modules/myFlatpak.nix
     ];
 
   # Bootloader.
@@ -57,8 +58,6 @@
   services.gnome.core-apps.enable = false;
   services.gnome.games.enable = false;
   services.gnome.core-developer-tools.enable = false; 
-  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
-  services.flatpak.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -100,6 +99,15 @@
   programs.firefox.enable = true;
   programs.gnome-terminal.enable = true;
   programs.obs-studio.enable = true;
+
+  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
+
+ # myFlatpak.enable = true;
+ # myFlatpak.remotes = [];
+ # myFlatpak.packages = [
+ #   "org.vinegarhq.Sober"
+ #   "com.stremio.Stremio"
+ # ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
