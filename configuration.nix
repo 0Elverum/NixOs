@@ -102,12 +102,15 @@
 
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
 
-  myFlatpak.enable = true;
-  myFlatpak.remotes = [];
-  myFlatpak.packages = [
-    "org.vinegarhq.Sober"
-    "com.stremio.Stremio"
-  ];
+  # Flatpak
+  myFlatpak = {
+    enable = true;
+    remotes = [];
+    packages = [
+      "org.vinegarhq.Sober"
+      "com.stremio.Stremio"
+      ];
+    };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,7 +119,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
     };
 
   nix.optimise = {
