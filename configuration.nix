@@ -11,7 +11,7 @@
       ./git.nix
       ./vscode.nix
       ./apps.nix
-#      ./modules/myFlatpak.nix
+      ./modules/myFlatpak.nix
     ];
 
   # Bootloader.
@@ -102,12 +102,12 @@
 
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
 
- # myFlatpak.enable = true;
- # myFlatpak.remotes = [];
- # myFlatpak.packages = [
- #   "org.vinegarhq.Sober"
- #   "com.stremio.Stremio"
- # ];
+  myFlatpak.enable = true;
+  myFlatpak.remotes = [];
+  myFlatpak.packages = [
+    "org.vinegarhq.Sober"
+    "com.stremio.Stremio"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
