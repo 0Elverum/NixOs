@@ -23,5 +23,6 @@
     btop
     mousepad
     nautilus
+    proton-vpn
   ];
 }
