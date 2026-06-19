@@ -13,16 +13,19 @@
     gnome-themes-extra
     papirus-icon-theme
     pwvucontrol
+    font-manager
     xarchiver
     discord
     eog # Eye of Gnome
     vlc
     gimp
+    drawio
     obsidian
     papers
     btop
     mousepad
     nautilus
     proton-vpn
+    steam-run
   ];
 }

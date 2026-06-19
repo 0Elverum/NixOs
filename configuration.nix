@@ -109,6 +109,7 @@
     packages = [
       "org.vinegarhq.Sober"
       "com.stremio.Stremio"
+      "org.onlyoffice.desktopeditors"
       ];
     };
 
