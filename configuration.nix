@@ -12,6 +12,7 @@
       ./vscode.nix
       ./apps.nix
       ./modules/myFlatpak.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -97,7 +98,6 @@
   programs.gamemode.enable = true;
   programs.steam.enable = true;
   programs.firefox.enable = true;
-  programs.gnome-terminal.enable = true;
   programs.obs-studio.enable = true;
 
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
@@ -115,6 +115,14 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Home Manager
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    backupFileExtension = "backup";
+    users.elverum = import ./home.nix;
+  };
 
   # Cleaning storage
   nix.gc = {

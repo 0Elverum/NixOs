@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     wineWow64Packages.stagingFull
     winetricks
-    protontricks
     gnomeExtensions.gsconnect
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
@@ -27,7 +26,6 @@
     mousepad
     nautilus
     proton-vpn
-    qbittorrent
     steam-run
   ];
 }
