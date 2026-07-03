@@ -8,10 +8,9 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./git.nix
-      ./vscode.nix
       ./apps.nix
       ./modules/myFlatpak.nix
+      ./git.nix
       <home-manager/nixos>
     ];
 
@@ -58,13 +57,20 @@
   services.desktopManager.gnome.enable = true;
   services.gnome.core-apps.enable = false;
   services.gnome.games.enable = false;
-  services.gnome.core-developer-tools.enable = false; 
+  services.gnome.core-developer-tools.enable = false;
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    ];  
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
+
+  services.xserver.excludePackages = with pkgs; [ xterm ];
+
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -94,14 +100,13 @@
   };
 
   # Programs
+  programs.gnome-terminal.enable = true;
   programs.fuse.enable = true;
   programs.gamemode.enable = true;
   programs.steam.enable = true;
   programs.firefox.enable = true;
   programs.obs-studio.enable = true;
-
-  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
-
+  
   # Flatpak
   myFlatpak = {
     enable = true;

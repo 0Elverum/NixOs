@@ -6,17 +6,15 @@
   environment.systemPackages = with pkgs; [
     wineWow64Packages.stagingFull
     winetricks
-    gnomeExtensions.gsconnect
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
+    gnomeExtensions.gsconnect
     gnome-tweaks
-    gnome-themes-extra
     papirus-icon-theme
     pwvucontrol
     font-manager
     xarchiver
     discord
-    eog # Eye of Gnome
     vlc
     gimp
     drawio
@@ -24,8 +22,8 @@
     papers
     btop
     mousepad
-    nautilus
     proton-vpn
+    nautilus
     steam-run
   ];
 }

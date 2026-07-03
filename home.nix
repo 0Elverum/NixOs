@@ -10,21 +10,31 @@
   home.packages = with pkgs; [
   ];
 
-  programs.kitty = {
+  programs.vscode = {
     enable = true;
-    themeFile = "TokyoNight";
-    settings = {
-      font_size = 12;
+    extensions = with pkgs.vscode-extensions; [
+      ms-ceintl.vscode-language-pack-es
+      jnoortheen.nix-ide
+      enkia.tokyo-night
+      ];
     };
-  };
 
   programs.ranger = {
     enable = true;
+      settings = {
+        preview_images = true;
+        preview_images_method = "kitty";
+        draw_borders = "both";
+        colorscheme = "snow";
+      };
+  };
+
+  programs.kitty = {
+    enable = true;
     settings = {
-      preview_images = true;
-      preview_images_method = "kitty";
-      colorscheme = "snow";
-      draw_borders = true;
+      fontSize = 12;
+      theme = "OneDark";
     };
   };
+
 }
