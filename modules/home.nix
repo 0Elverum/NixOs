@@ -5,14 +5,12 @@
   home.username = "elverum";
   home.homeDirectory = "/home/elverum";
   home.stateVersion = "26.05";
-
-  # Paquetes solo para el usuario
   home.packages = with pkgs; [
   ];
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       ms-ceintl.vscode-language-pack-es
       jnoortheen.nix-ide
       enkia.tokyo-night

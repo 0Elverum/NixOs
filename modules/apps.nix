@@ -9,12 +9,14 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     gnomeExtensions.gsconnect
+    gnomeExtensions.clipboard-indicator
     gnome-tweaks
     papirus-icon-theme
     pwvucontrol
     font-manager
     xarchiver
     discord
+    eog # Eye of Gnome
     vlc
     gimp
     drawio

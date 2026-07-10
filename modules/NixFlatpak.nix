@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.myFlatpak;
+  cfg = config.NixFlatpak;
 in
 {
-  options.myFlatpak = {
+  options.NixFlatpak = {
     enable = lib.mkEnableOption "Gestión declarativa de Flatpaks";
     
     remotes = lib.mkOption {
