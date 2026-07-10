@@ -92,7 +92,6 @@
 
   # Programs
   programs.gnome-terminal.enable = true;
-  programs.fuse.enable = true;
   programs.gamemode.enable = true;
   programs.steam.enable = true;
   programs.firefox.enable = true;
