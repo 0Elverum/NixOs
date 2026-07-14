@@ -2,7 +2,7 @@
 
 {
   # Hostname
-  networking.hostName = "NixOS";
+  networking.hostName = "glow-nix";
 
   # Networking
   networking.networkmanager.enable = true;

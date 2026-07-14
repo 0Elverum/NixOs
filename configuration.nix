@@ -16,6 +16,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
 
+  # Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Set your time zone.
   time.timeZone = "America/Caracas";
 
@@ -111,6 +114,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Bluethoot
+  hardware.bluetooth.enable = true;
+
+  # Power save
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   # Home Manager
   home-manager = {
     useUserPackages = true;
@@ -119,7 +129,7 @@
     users.elverum = import ./modules/home.nix;
   };
 
-  # Cleaning storage
+  # Cleaning/optimise storage
   nix.gc = {
     automatic = true;
     dates = "weekly";
