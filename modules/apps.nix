@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search [...]
 
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     wineWow64Packages.stagingFull
     winetricks

@@ -1,4 +1,3 @@
-# /etc/nixos/home.nix
 { config, pkgs, ... }:
 
 {

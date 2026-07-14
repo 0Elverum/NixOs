@@ -4,11 +4,12 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./modules/mainUser.nix
       ./modules/apps.nix
       ./modules/git.nix
       ./modules/networking.nix
-      ./modules/NixFlatpak.nix
-      <home-manager/nixos>
+      ./modules/locales.nix
+      ./modules/nixFlatpak.nix
     ];
 
   # Bootloader.
@@ -18,24 +19,6 @@
 
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Set your time zone.
-  time.timeZone = "America/Caracas";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "es_VE.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_VE.UTF-8";
-    LC_IDENTIFICATION = "es_VE.UTF-8";
-    LC_MEASUREMENT = "es_VE.UTF-8";
-    LC_MONETARY = "es_VE.UTF-8";
-    LC_NAME = "es_VE.UTF-8";
-    LC_NUMERIC = "es_VE.UTF-8";
-    LC_PAPER = "es_VE.UTF-8";
-    LC_TELEPHONE = "es_VE.UTF-8";
-    LC_TIME = "es_VE.UTF-8";
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -82,16 +65,6 @@
 
   # Enable touchpad support
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."elverum" = {
-    isNormalUser = true;
-    description = "Elverum";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    # Packages only for this user.
-    ];
-  };
 
   # Programs
   programs.gnome-terminal.enable = true;

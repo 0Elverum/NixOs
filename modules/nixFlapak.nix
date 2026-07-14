@@ -22,8 +22,8 @@ in
         };
       });
       
-    default = [];
-    description = "Modulo para agregar paquetes y remotos adicionales desde flatpak";
+      default = [];
+      description = "Modulo para agregar paquetes y remotos adicionales desde flatpak";
     };
 
     packages = lib.mkOption {

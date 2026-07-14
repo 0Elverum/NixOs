@@ -7,7 +7,6 @@
       user.email = "elverum7@proton.me";
       core.editor = "nano";
       credential.helper = "store";
-      safe.directory = "/etc/nixos";
       };
   };
 }
