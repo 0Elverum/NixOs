@@ -9,7 +9,7 @@
       ./modules/git.nix
       ./modules/networking.nix
       ./modules/locales.nix
-      ./modules/nixFlatpak.nix
+      ./modules/flatpak.nix
     ];
 
   # Bootloader.
@@ -72,17 +72,6 @@
   programs.steam.enable = true;
   programs.firefox.enable = true;
   programs.obs-studio.enable = true;
-  
-  # Flatpak module
-  NixFlatpak = {
-    enable = true;
-    remotes = [];
-    packages = [
-      "org.vinegarhq.Sober"
-      "com.stremio.Stremio"
-      "org.onlyoffice.desktopeditors"
-      ];
-    };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
