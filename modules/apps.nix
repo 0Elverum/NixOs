@@ -26,5 +26,6 @@
     proton-vpn
     nautilus
     steam-run
+    wget21
   ];
 }
