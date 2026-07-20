@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -75,21 +75,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Bluethoot
-  hardware.bluetooth.enable = true;
-
-  # Power save
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
-
-  # Home Manager
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    backupFileExtension = "backup";
-    users.elverum = import ./modules/home.nix;
-  };
 
   # Cleaning/optimise storage
   nix.gc = {

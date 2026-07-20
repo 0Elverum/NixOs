@@ -3,6 +3,7 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+#    xwayland-satellite
     wineWow64Packages.stagingFull
     winetricks
     gnomeExtensions.blur-my-shell
@@ -26,6 +27,6 @@
     proton-vpn
     nautilus
     steam-run
-    wget21
-  ];
+    wget2
+1  ];
 }

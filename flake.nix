@@ -3,19 +3,28 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     
     home-manager = {
-      url = "github:nix-community/home-manager/3cd22efe6471dc7365c822bd9ad73a21e55f38fb";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/20d42f0ee98c9fe9f85e8d1de474f1409ed10d05";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, spicetify-nix, ... }@inputs: {
     nixosConfigurations.glow-nix = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-        home-manager.nixosModules.home-manager
+        
         nix-flatpak.nixosModules.nix-flatpak
+        home-manager.nixosModules.home-manager {
+          home-manager.useUserPackages = true;
+          home-manager.useGlobalPkgs = true;
+          home-manager.users.elverum = import ./modules/home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
       ];
     };
   };
