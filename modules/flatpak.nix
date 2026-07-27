@@ -5,8 +5,9 @@
 
   services.flatpak.packages = [
     "org.vinegarhq.Sober"
-    "com.stremio.Stremio"
     "org.onlyoffice.desktopeditors"
+    "com.stremio.Stremio"
+    "io.github.astralvixen.geforce-infinity"
   ];
 
   services.flatpak.uninstallUnmanaged = true;

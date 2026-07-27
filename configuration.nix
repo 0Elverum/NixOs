@@ -29,6 +29,16 @@
     enable32Bit = true;
     };
 
+  # Steam
+  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true;
+    protontricks.enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
+
   # Gnome
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -68,8 +78,6 @@
 
   # Programs
   programs.gnome-terminal.enable = true;
-  programs.gamemode.enable = true;
-  programs.steam.enable = true;
   programs.firefox.enable = true;
   programs.obs-studio.enable = true;
 

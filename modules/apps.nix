@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+  let
+    unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
 {
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-#    xwayland-satellite
     wineWow64Packages.stagingFull
     winetricks
     gnomeExtensions.blur-my-shell
@@ -28,5 +30,5 @@
     nautilus
     steam-run
     wget2
-1  ];
+  ];
 }

@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
   let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in
 {
   home.username = "elverum";
@@ -32,6 +32,10 @@
       adblockify
       hidePodcasts
       shuffle
+      oldLikeButton
+      aiBandBlocker
+      sideHide
+      focusMode
     ];
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
