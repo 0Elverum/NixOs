@@ -17,9 +17,8 @@
     pwvucontrol
     font-manager
     xarchiver
-    discord
+    mpv
     eog # Eye of Gnome
-    vlc
     gimp
     drawio
     obsidian
@@ -27,6 +26,7 @@
     btop
     mousepad
     proton-vpn
+    protonup-qt
     nautilus
     steam-run
     wget2

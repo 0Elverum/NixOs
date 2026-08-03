@@ -12,9 +12,11 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    nixcord.url = "github:4evy/nixcord";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-flatpak, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-flatpak, nixcord, ... }@inputs: {
     nixosConfigurations.glow-nix = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
