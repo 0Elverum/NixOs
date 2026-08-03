@@ -4,7 +4,7 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = [
+    extraPackages = with pkgs; [
       wl-clipboard
       mako
       waybar
@@ -14,7 +14,7 @@
       wofi
       grim
       slurp
-      foot
+      kitty
     ];
   };
 }

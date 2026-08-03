@@ -96,10 +96,16 @@
 
   programs.kitty = {
     enable = true;
-    settings = {
-      fontSize = 12;
-      theme = "OneDark";
+    shellIntegration.enableBashIntegration = true;
+    enableGitIntegration = true;
+    font = {
+      size = 12;
+      name = "DejaVu Sans";
     };
+    extraConfig = ''
+      include themes/Broadcast.conf
+      background_opacity 0.75
+    '';
   };
 
 }
