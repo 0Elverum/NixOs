@@ -10,7 +10,6 @@
       ./modules/networking.nix
       ./modules/locales.nix
       ./modules/flatpak.nix
-      ./modules/sway.nix
     ];
 
   # Bootloader.

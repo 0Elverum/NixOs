@@ -3,7 +3,6 @@
     unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in
 {
-
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     wineWow64Packages.stagingFull
@@ -13,9 +12,9 @@
     gnomeExtensions.gsconnect
     gnomeExtensions.clipboard-indicator
     gnome-tweaks
+    font-manager
     papirus-icon-theme
     pwvucontrol
-    font-manager
     xarchiver
     mpv
     eog # Eye of Gnome

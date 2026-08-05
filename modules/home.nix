@@ -20,10 +20,18 @@
       name = "ranger";
       comment = "Ranger file manager";
       exec = "kitty -e ranger";
-      icon = "kitty";
+      icon = ./extras/Ranger_logo.png;
       terminal = false;
       type = "Application";
       categories = [ "Utility" "FileManager" ];
+    };
+    "ranger" = {
+      name = "ranger";
+      noDisplay = true;
+    };
+    "kitty" = {
+      name = "kitty";
+      noDisplay = true;
     };
   };
 
@@ -104,7 +112,7 @@
     };
     extraConfig = ''
       include themes/Broadcast.conf
-      background_opacity 0.75
+      background_opacity 0.9
     '';
   };
 
