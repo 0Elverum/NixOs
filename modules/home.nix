@@ -25,41 +25,14 @@
       type = "Application";
       categories = [ "Utility" "FileManager" ];
     };
-    "ranger" = {
-      name = "ranger";
-      noDisplay = true;
-    };
     "kitty" = {
       name = "kitty";
       noDisplay = true;
     };
-  };
-
-  programs.neovim = {
-    enable = true;
-    initLua = ''
-        vim.opt.number = true
-        vim.opt.relativenumber = false
-        vim.opt.cursorline = true
-        vim.opt.expandtab = true
-        vim.opt.tabstop = 4
-
-        vim.lsp.config.nixd = {
-          cmd = { "nixd" },
-          filetypes = { "nix" },
-          }
-        vim.lsp.enable("nixd")
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover)
-      '';
-    plugins = with pkgs.vimPlugins; [
-      nvim-tree-lua
-      nvim-treesitter
-      lualine-nvim
-      nvim-lspconfig
-    ];
-    extraPackages = with pkgs; [
-      nixd
-    ];
+    "ranger" = {
+      name = "ranger";
+      noDisplay = true;
+    };
   };
 
   programs.nixcord = {
