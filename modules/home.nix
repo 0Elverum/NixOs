@@ -35,6 +35,14 @@
     };
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.adw-gtk3;
+    };
+  };  
+
   programs.nixcord = {
     enable = true;
     discord.vencord.enable = true;

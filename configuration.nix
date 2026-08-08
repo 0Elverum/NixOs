@@ -21,9 +21,6 @@
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Opengl
   hardware.graphics = {
     enable = true;
@@ -40,27 +37,6 @@
     ];
   };
 
-  # Gnome
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  services.gnome = {
-    core-apps.enable = false;
-    games.enable = false;
-    core-developer-tools.enable = false;
-  };
-
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-  ];  
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  services.xserver.excludePackages = with pkgs; [ xterm ];
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -74,13 +50,21 @@
     pulse.enable = true;
   };
 
-  # Enable touchpad support
-  # services.xserver.libinput.enable = true;
+  # Services
+  services = {
+    upower.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
+  };
 
   # Programs
-  programs.gnome-terminal.enable = true;
-  programs.firefox.enable = true;
-  programs.obs-studio.enable = true;
+  programs = {
+    xfconf.enable = true;
+    dconf.enable = true;
+    thunar.enable = true;
+    firefox.enable = true;
+    obs-studio.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -103,5 +87,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "26.05"; # Did you read the comment?
+  system.stateVersion = "26.05";
 }

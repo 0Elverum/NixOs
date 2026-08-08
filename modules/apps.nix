@@ -7,13 +7,9 @@
   environment.systemPackages = with pkgs; [
     wineWow64Packages.stagingFull
     winetricks
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.appindicator
-    gnomeExtensions.gsconnect
-    gnomeExtensions.clipboard-indicator
-    gnome-tweaks
     font-manager
     papirus-icon-theme
+    adw-gtk3
     pwvucontrol
     xarchiver
     mpv
@@ -26,7 +22,6 @@
     mousepad
     proton-vpn
     protonup-qt
-    nautilus
     steam-run
     wget2
   ];

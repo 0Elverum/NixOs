@@ -5,10 +5,19 @@
   
   programs.dms-shell = {
     enable = true;
-    enableSystemMonitoring = true;
     enableVPN = true;
     enableDynamicTheming = true;
-    enableAudioWavelength = true;
     enableCalendarEvents = true;
+  };
+
+  services.displayManager.dms-greeter = {
+  compositor = {
+    name = "niri";
+  };
+  configHome = "/home/elverum";
+    logs = {
+      save = true; 
+      path = "/tmp/dms-greeter.log";
+    };
   };
 }
