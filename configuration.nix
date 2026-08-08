@@ -10,6 +10,7 @@
       ./modules/networking.nix
       ./modules/locales.nix
       ./modules/flatpak.nix
+      ./modules/niri.nix
     ];
 
   # Bootloader.
