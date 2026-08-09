@@ -25,10 +25,6 @@
       type = "Application";
       categories = [ "Utility" "FileManager" ];
     };
-    "kitty" = {
-      name = "kitty";
-      noDisplay = true;
-    };
     "ranger" = {
       name = "ranger";
       noDisplay = true;
@@ -38,9 +34,14 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Adwaita-dark";
+      name = "Adwaita";
       package = pkgs.adw-gtk3;
     };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    colorScheme = "dark";
   };  
 
   programs.nixcord = {
@@ -93,7 +94,7 @@
     };
     extraConfig = ''
       include themes/Broadcast.conf
-      background_opacity 0.9
+      background_opacity 1
     '';
   };
 

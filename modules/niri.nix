@@ -9,15 +9,4 @@
     enableDynamicTheming = true;
     enableCalendarEvents = true;
   };
-
-  services.displayManager.dms-greeter = {
-  compositor = {
-    name = "niri";
-  };
-  configHome = "/home/elverum";
-    logs = {
-      save = true; 
-      path = "/tmp/dms-greeter.log";
-    };
-  };
 }

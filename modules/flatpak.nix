@@ -5,7 +5,6 @@
 
   services.flatpak.packages = [
     "org.vinegarhq.Sober"
-    "org.onlyoffice.desktopeditors"
     "com.stremio.Stremio"
     "io.github.astralvixen.geforce-infinity"
   ];

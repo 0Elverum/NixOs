@@ -26,6 +26,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useUserPackages = true;
           home-manager.useGlobalPkgs = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.users.elverum = import ./modules/home.nix;
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
