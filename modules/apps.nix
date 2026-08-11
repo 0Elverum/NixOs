@@ -5,6 +5,7 @@
 {
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    xwayland-satellite
     wineWow64Packages.stagingFull
     winetricks
     font-manager

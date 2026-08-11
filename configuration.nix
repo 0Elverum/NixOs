@@ -66,6 +66,12 @@
 
   # Programs
   programs = {
+    
+    localsend = {
+      enable = true;
+      openFirewall = true;
+    };
+
     xfconf.enable = true;
     dconf.enable = true;
     thunar.enable = true;
