@@ -15,20 +15,8 @@
     inputs.nixcord.homeModules.nixcord
   ];
 
-  xdg.desktopEntries = {
-    "Kitty-ranger" = {
-      name = "ranger";
-      comment = "Ranger file manager";
-      exec = "kitty -e ranger";
-      icon = ./extras/Ranger_logo.png;
-      terminal = false;
-      type = "Application";
-      categories = [ "Utility" "FileManager" ];
-    };
-    "ranger" = {
-      name = "ranger";
-      noDisplay = true;
-    };
+  systemd.user.sessionVariables = {
+    TERMINAL = "kitty";
   };
 
   gtk = {
@@ -42,7 +30,7 @@
       package = pkgs.papirus-icon-theme;
     };
     colorScheme = "dark";
-  };  
+  };
 
   programs.nixcord = {
     enable = true;
@@ -94,8 +82,7 @@
     };
     extraConfig = ''
       include themes/Broadcast.conf
-      background_opacity 1
+      background_opacity 0.85
     '';
   };
-
 }

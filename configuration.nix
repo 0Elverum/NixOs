@@ -22,8 +22,8 @@
   services.displayManager = {
     sddm.enable = true;
     sddm.wayland.enable = true;
+    defaultSession = "niri";
     };
-  services.displayManager.defaultSession = "niri";
 
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -33,16 +33,6 @@
     enable = true;
     enable32Bit = true;
     };
-
-  # Steam
-  programs.gamemode.enable = true;
-  programs.steam = {
-    enable = true;
-    protontricks.enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -57,7 +47,7 @@
     pulse.enable = true;
   };
 
-  # Services
+  # Other Services
   services = {
     upower.enable = true;
     gvfs.enable = true;
@@ -72,11 +62,24 @@
       openFirewall = true;
     };
 
+    gamemode.enable = true;
+    steam = {
+      enable = true;
+      protontricks.enable = true;
+    };
+
     xfconf.enable = true;
     dconf.enable = true;
     thunar.enable = true;
     firefox.enable = true;
     obs-studio.enable = true;
+  };
+
+  # Environment variables
+  environment = {
+    shellAliases = {
+      cdnix = "cd /etc/nixos";
+    };
   };
 
   # Allow unfree packages

@@ -13,9 +13,9 @@
     adwaita-icon-theme
     adw-gtk3
     pwvucontrol
-    xarchiver
+    kdePackages.ark
     mpv
-    eog # Eye of Gnome
+    qview
     gimp
     onlyoffice-desktopeditors
     drawio
@@ -27,5 +27,8 @@
     protonup-qt
     steam-run
     wget2
+    fastfetch
+    hyfetch
+    cava
   ];
 }
