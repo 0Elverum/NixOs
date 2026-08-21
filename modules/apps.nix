@@ -15,7 +15,7 @@
     pwvucontrol
     kdePackages.ark
     mpv
-    qview
+    photoqt
     gimp
     onlyoffice-desktopeditors
     drawio

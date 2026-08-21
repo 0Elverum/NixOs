@@ -15,10 +15,6 @@
     inputs.nixcord.homeModules.nixcord
   ];
 
-  systemd.user.sessionVariables = {
-    TERMINAL = "kitty";
-  };
-
   gtk = {
     enable = true;
     theme = {

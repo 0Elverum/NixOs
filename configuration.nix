@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./modules/storage.nix
       ./modules/mainUser.nix
       ./modules/apps.nix
       ./modules/git.nix
@@ -56,13 +57,12 @@
 
   # Programs
   programs = {
-    
+
     localsend = {
       enable = true;
       openFirewall = true;
     };
 
-    gamemode.enable = true;
     steam = {
       enable = true;
       protontricks.enable = true;
@@ -71,12 +71,17 @@
     xfconf.enable = true;
     dconf.enable = true;
     thunar.enable = true;
+    gamemode.enable = true;
     firefox.enable = true;
     obs-studio.enable = true;
   };
 
   # Environment variables
   environment = {
+    sessionVariables = {
+      TERMINAL = "kitty";
+    };
+    
     shellAliases = {
       cdnix = "cd /etc/nixos";
     };
