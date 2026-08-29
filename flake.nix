@@ -14,9 +14,11 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     nixcord.url = "github:4evy/nixcord";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-flatpak, nixcord, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
     nixosConfigurations.glow-nix = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [

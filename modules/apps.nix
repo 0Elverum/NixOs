@@ -6,29 +6,51 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     xwayland-satellite
+
+    # Wine
     wineWow64Packages.stagingFull
     winetricks
+
+    # Fonts
     font-manager
+
+    # Themes
     papirus-icon-theme
     adwaita-icon-theme
     adw-gtk3
+
+    # Audio
     pwvucontrol
-    kdePackages.ark
+    tauon
     mpv
+    picard
+    
+    # Image
     photoqt
     gimp
+
+    # Office
     onlyoffice-desktopeditors
     drawio
     obsidian
     papers
-    btop
     mousepad
-    proton-vpn
-    protonup-qt
+
+    # CLI/TUI
+    btop
     steam-run
     wget2
     fastfetch
     hyfetch
     cava
+
+    # Apps
+    nicotine-plus
+    kdePackages.ark    
+    proton-vpn
+    protonup-qt
+
+    # Flakes
+    inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable
   ];
 }

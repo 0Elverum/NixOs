@@ -15,6 +15,9 @@
     inputs.nixcord.homeModules.nixcord
   ];
 
+  home.file."niri".source =
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dots/niri";
+
   gtk = {
     enable = true;
     theme = {
