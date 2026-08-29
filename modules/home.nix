@@ -15,7 +15,7 @@
     inputs.nixcord.homeModules.nixcord
   ];
 
-  home.file."niri".source =
+  xdg.configFile."niri".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dots/niri";
 
   gtk = {
