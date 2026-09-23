@@ -12,7 +12,7 @@
       ./modules/locales.nix
       ./modules/flatpak.nix
       ./modules/niri.nix
-      ./schema.nix
+      ./modules/audacious-overlay.nix
     ];
 
   # Bootloader.

@@ -8,8 +8,7 @@
   environment.systemPackages = with pkgs; [
     # Sistema
     xwayland-satellite
-    gsettings-desktop-schemas
-
+    
     # Wine
     wineWow64Packages.stagingFull
 
@@ -20,9 +19,7 @@
     pwvucontrol
     mpv
     picard
-    sayonara
-    audacious
-    audacious-plugins
+    # audacious + plugins = module:audacious-overlay.nix
     
     # Image
     photoqt
@@ -30,8 +27,8 @@
 
     # Office
     onlyoffice-desktopeditors
-    drawio
     obsidian
+    drawio
     papers
     mousepad
 

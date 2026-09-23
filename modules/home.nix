@@ -29,6 +29,18 @@
     colorScheme = "dark";
   };
 
+  qt = {
+    enable = true;
+    platformTheme = {
+      name = "qtct";
+      package = [ pkgs.kdePackages.qt6ct pkgs.libsForQt5.qt5ct ];
+    };
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
+
   # VSCodium
   programs.vscodium = {
     enable = true;
