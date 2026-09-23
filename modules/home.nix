@@ -1,19 +1,17 @@
 { config, pkgs, inputs, ... }:
 
-  let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in
 {
   home.username = "elverum";
   home.homeDirectory = "/home/elverum";
-  home.stateVersion = "26.05";  
+  home.stateVersion = "26.05";
+    
   home.packages = with pkgs; [
+    nerd-fonts._0xproto
   ];
 
-  imports = [
-    inputs.spicetify-nix.homeManagerModules.spicetify
-    inputs.nixcord.homeModules.nixcord
-  ];
+  fonts.fontconfig.enable = true;
+  
+  imports = [];
 
   xdg.configFile."niri".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dots/niri";
@@ -31,57 +29,35 @@
     colorScheme = "dark";
   };
 
-  programs.nixcord = {
+  # VSCodium
+  programs.vscodium = {
     enable = true;
-    discord.vencord.enable = true;
-    config.themeLinks = [ "https://refact0r.github.io/system24/build/system24.css" ];
+    profiles = {
+      default = {
+        userSettings = {
+        "editor.fontFamily" = "'0xProto Nerd Font', monospace";
+        "workbench.colorTheme" = "Tokyo Night";
+        };
+      
+        extensions = with pkgs.vscode-extensions; [
+          enkia.tokyo-night
+          jnoortheen.nix-ide
+          ms-ceintl.vscode-language-pack-es
+        ];
+      };
+    };
   };
   
-  programs.spicetify = {
+  # Foot
+  programs.foot = {
     enable = true;
-    enabledExtensions = with spicePkgs.extensions; [
-      adblockify
-      hidePodcasts
-      shuffle
-      oldLikeButton
-      aiBandBlocker
-      sideHide
-      focusMode
-    ];
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
-  };
-
-  programs.vscode = {
-    enable = true;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      ms-ceintl.vscode-language-pack-es
-      jnoortheen.nix-ide
-      enkia.tokyo-night
-      ];
-    };
-
-  programs.ranger = {
-    enable = true;
-      settings = {
-        preview_images = true;
-        preview_images_method = "kitty";
-        draw_borders = "both";
-        colorscheme = "snow";
+    settings = {
+      main = {
+        font = "0xProtoNerdFont:size=12";
       };
-  };
-
-  programs.kitty = {
-    enable = true;
-    shellIntegration.enableBashIntegration = true;
-    enableGitIntegration = true;
-    font = {
-      size = 12;
-      name = "DejaVu Sans";
+      colors-dark = {
+        alpha = 0.85;
+      };
     };
-    extraConfig = ''
-      include themes/Broadcast.conf
-      background_opacity 0.85
-    '';
   };
 }

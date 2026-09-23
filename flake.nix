@@ -10,11 +10,7 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
-    nixcord.url = "github:4evy/nixcord";
-
+    
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
 

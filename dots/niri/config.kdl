@@ -275,6 +275,12 @@ blur {
   saturation 1.0
 }
 
+switch-events {
+    lid-close {
+        spawn "bash" "-c" "dms ipc call lock lock && sleep 0.5 && systemctl suspend"
+    }
+}
+
 include "dms/alttab.kdl"
 include "dms/binds.kdl"
 include "dms/colors.kdl"

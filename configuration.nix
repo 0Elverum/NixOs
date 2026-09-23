@@ -12,12 +12,14 @@
       ./modules/locales.nix
       ./modules/flatpak.nix
       ./modules/niri.nix
+      ./schema.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # DisplayManager
   services.displayManager = {
@@ -29,11 +31,20 @@
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Opengl
+  # Hardware
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    };
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+    ];
+  };
+  hardware.enableRedistributableFirmware = true;
+  hardware.cpu.intel.updateMicrocode = true;
+  zramSwap.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -71,7 +82,6 @@
     xfconf.enable = true;
     dconf.enable = true;
     thunar.enable = true;
-    gamemode.enable = true;
     firefox.enable = true;
     obs-studio.enable = true;
   };
@@ -79,7 +89,7 @@
   # Environment variables
   environment = {
     sessionVariables = {
-      TERMINAL = "kitty";
+      TERMINAL = "foot";
     };
     
     shellAliases = {
@@ -93,9 +103,14 @@
     trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
 
-
-  # Allow unfree packages
+  # Allow unfree packagesz
   nixpkgs.config.allowUnfree = true;
+
+  # Appimage
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   # Cleaning/optimise storage
   nix.gc = {
