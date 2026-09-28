@@ -9,9 +9,9 @@
     nerd-fonts._0xproto
   ];
 
-  fonts.fontconfig.enable = true;
-  
   imports = [];
+  
+  fonts.fontconfig.enable = true;
 
   xdg.configFile."niri".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dots/niri";
@@ -52,8 +52,8 @@
         };
       
         extensions = with pkgs.vscode-extensions; [
-          enkia.tokyo-night
           jnoortheen.nix-ide
+          enkia.tokyo-night
           ms-ceintl.vscode-language-pack-es
         ];
       };

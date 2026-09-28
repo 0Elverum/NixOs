@@ -269,10 +269,10 @@ window-rule {
 }
 
 blur {
-  passes 2
-  offset 2.0
+  passes 3
+  offset 1.0
   noise 0.05
-  saturation 1.0
+  saturation 0.8
 }
 
 switch-events {

@@ -6,8 +6,11 @@
 {
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    # Sistema
+    # System
     xwayland-satellite
+
+    # Themes/Fonts
+    adwaita-icon-theme
     
     # Wine
     wineWow64Packages.stagingFull
@@ -19,12 +22,11 @@
     pwvucontrol
     mpv
     picard
-    # audacious + plugins = module:audacious-overlay.nix
     
     # Image
     photoqt
     gimp
-
+    
     # Office
     onlyoffice-desktopeditors
     obsidian
@@ -34,8 +36,9 @@
 
     # CLI/TUI
     btop
+    unstable.concord-tui
     fastfetch
-    cava
+    kew
     _7zz
     unrar
 
