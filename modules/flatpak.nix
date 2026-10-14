@@ -6,8 +6,7 @@
 
     packages = [
       "org.vinegarhq.Sober"
-      "com.stremio.Stremio"
-      "io.github.astralvixen.geforce-infinity"
+      "com.pokemmo.PokeMMO"
     ];
 
     uninstallUnmanaged = true;

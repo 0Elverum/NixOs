@@ -12,8 +12,8 @@
     # Themes/Fonts
     adwaita-icon-theme
     
-    # Wine
-    wineWow64Packages.stagingFull
+    # Games
+    faugus-launcher
 
     # Fonts
     font-manager
@@ -33,13 +33,11 @@
     drawio
     papers
     mousepad
+    gnome-calculator
 
     # CLI/TUI
     btop
-    unstable.concord-tui
-    fastfetch
     kew
-    _7zz
     unrar
 
     # Apps

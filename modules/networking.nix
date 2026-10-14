@@ -8,5 +8,7 @@
   networking.networkmanager.enable = true;
 
   # Firewall ports
-  networking.firewall.enable = true;
+  networking.firewall= {
+    enable = true;
+  };
 }
