@@ -9,10 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     
     nix-gaming.url = "github:fufexan/nix-gaming";
-  };
+    };
 
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
     nixosConfigurations.glow-nix = nixpkgs.lib.nixosSystem {
@@ -20,6 +22,7 @@
       modules = [
         ./configuration.nix
         
+        inputs.noctalia.nixosModules.default
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager {
           home-manager.useUserPackages = true;

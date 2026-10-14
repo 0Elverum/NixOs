@@ -11,7 +11,7 @@
       ./modules/networking.nix
       ./modules/locales.nix
       ./modules/flatpak.nix
-      ./modules/niri.nix
+      ./modules/session.nix
     ];
 
   # Bootloader.
@@ -19,13 +19,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
   boot.supportedFilesystems = [ "ntfs" ];
-
-  # DisplayManager
-  services.displayManager = {
-    sddm.enable = true;
-    sddm.wayland.enable = true;
-    defaultSession = "niri";
-    };
 
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
