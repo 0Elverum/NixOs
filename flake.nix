@@ -9,7 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    dank-greeter = {
+      url = "github:duxlabs-dev/dux-greeter";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     
@@ -22,7 +30,6 @@
       modules = [
         ./configuration.nix
         
-        inputs.noctalia.nixosModules.default
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager {
           home-manager.useUserPackages = true;

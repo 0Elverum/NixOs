@@ -89,12 +89,17 @@
     };
   };
 
-  # Cachix
+  # NixConfig
   nix.settings = {
-    substituters = [
+    auto-optimise-store = true;
+
+    # Cache for flakes
+    trusted-users = [ "@wheel" ];
+    extra-substituters = [
       "https://nix-gaming.cachix.org"
     ];
-    trusted-public-keys = [
+    
+    extra-trusted-public-keys = [
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
   };
@@ -113,11 +118,6 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
-    };
-
-  nix.optimise = {
-    automatic = true;
-    dates = [ "weekly" ];
     };
 
   system.stateVersion = "26.05";

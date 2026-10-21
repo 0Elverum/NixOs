@@ -31,8 +31,8 @@ input {
     trackpoint {
         // off
         // natural-scroll
-        accel-speed 0.1
-        // accel-profile "flat"
+        accel-speed 0.3
+        accel-profile "flat"
         // scroll-method "on-button-down"
         // scroll-button 273
         // scroll-button-lock
@@ -264,7 +264,7 @@ window-rule {
 blur {
   passes 3
   offset 1.0
-  noise 0.05
+  noise 0
   saturation 0.8
 }
 
