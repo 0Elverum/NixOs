@@ -1,9 +1,11 @@
 { config, pkgs, inputs, ... }:
 
+  let
+    unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
 {
-  services.displayManager.dms-greeter = {
+  programs.dms-greeter = {
     enable = true;
-    package = inputs.dms-greeter.package.${pkgs.stdenv.hostPlatform.system}.default;
     compositor.name = "niri";
     configHome = "/home/elverum";
     logs = {
@@ -14,16 +16,16 @@
 
   programs.niri.enable = true;
   
-  programs.dms-shell = {
+  programs.dank-material-shell = {
     enable = true;
-    package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-  enableDynamicTheming = true;
-  enableClipboardPaste = false;
-  enableSystemMonitoring = false;
-  enableAudioWavelength = false;
-  enableCalendarEvents = false;
-  enableVPN = false;
+    quickshell.package = unstable.quickshell;
+    
+    enableVPN = true;
+    enableDynamicTheming = true;
+    enableClipboardPaste = true;
+    enableSystemMonitoring = false;
+    enableAudioWavelength = false;
+    enableCalendarEvents = false;
 
     systemd = {
       enable = true;

@@ -68,8 +68,13 @@
         font = "0xProtoNerdFont:size=12";
       };
       colors-dark = {
-        alpha = 0.85;
+        alpha = 0.5;
       };
     };
+  };
+
+  services.rescrobbled = {
+    enable = true;
+    package = pkgs.rescrobbled;
   };
 }

@@ -6,28 +6,6 @@ input {
         }
     }
 
-    touchpad {
-        // off
-        tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        scroll-method "two-finger"
-        disabled-on-external-mouse
-    }
-
-    mouse {
-        // off
-        // natural-scroll
-        accel-speed -0.4
-        // accel-profile "adaptive"
-        // scroll-method "no-scroll"
-    }
-
     trackpoint {
         // off
         // natural-scroll
@@ -38,9 +16,6 @@ input {
         // scroll-button-lock
         // middle-emulation
     }
-
-    // warp-mouse-to-focus
-    // focus-follows-mouse max-scroll-amount="0%"
 }
 
 layout {
@@ -81,7 +56,7 @@ hotkey-overlay {
 
 prefer-no-csd
 
-screenshot-path "~/Imágenes/Screenshots/ from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Imágenes/Screenshots/from %Y-%m-%d %H-%M-%S.png"
 // screenshot-path null
 
 window-rule {
@@ -94,15 +69,15 @@ binds {
 
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
 
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioStop        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
 
     XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "10" ""; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "10" ""; }
@@ -257,24 +232,16 @@ gestures {
 window-rule {
     background-effect {
         blur true
-        xray true
     }
 }
 
 blur {
-  passes 3
-  offset 1.0
   noise 0
   saturation 0.8
 }
 
-switch-events {
-    lid-close {
-        spawn "bash" "-c" "dms ipc call lock lock && sleep 0.5 && systemctl suspend"
-    }
-}
-
 include "dms/alttab.kdl"
+include "dms/binds-next.kdl"
 include "dms/binds.kdl"
 include "dms/colors.kdl"
 include "dms/cursor.kdl"
@@ -282,3 +249,4 @@ include "dms/layout.kdl"
 include "dms/outputs.kdl"
 include "dms/windowrules.kdl"
 include "dms/wpblur.kdl"
+include "dms/input.kdl"

@@ -13,15 +13,15 @@
     adwaita-icon-theme
     
     # Games
-    faugus-launcher
+    unstable.faugus-launcher
 
     # Fonts
     font-manager
 
     # Audio/Video
-    pwvucontrol
-    mpv
     picard
+    mpv
+    kew
     
     # Image
     photoqt
@@ -37,11 +37,10 @@
 
     # CLI/TUI
     btop
-    kew
     unrar
 
     # Apps
-    peazip
+    xarchiver
     nicotine-plus
     proton-vpn
     vesktop

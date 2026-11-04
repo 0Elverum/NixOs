@@ -14,11 +14,19 @@
       ./modules/session.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.consoleMode = "max";
-  boot.supportedFilesystems = [ "ntfs" ];
+  # Bootloader
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    loader.systemd-boot.consoleMode = "max";
+
+    tmp.cleanOnBoot = true;
+    supportedFilesystems = [ "ntfs" ];
+  };
+
+  # Swap
+  boot.initrd.systemd.enable = true;
+  boot.zswap.enable = true;
 
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -36,7 +44,6 @@
   };
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.intel.updateMicrocode = true;
-  zramSwap.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -51,15 +58,29 @@
     pulse.enable = true;
   };
 
+  # Suspend when the lid is close
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "ignore";
+  };
+
   # Other Services
   services = {
     upower.enable = true;
-    gvfs.enable = true;
-    tumbler.enable = true;
+    gvfs.enable = true;     # Mount, trash, and other functionalities
+    tumbler.enable = true;  # Thumbnail support for images
   };
 
   # Programs
   programs = {
+    thunar = {
+      enable = true;
+      plugins = [
+        pkgs.thunar-archive-plugin
+        pkgs.thunar-volman
+      ];
+    };
 
     localsend = {
       enable = true;
@@ -71,9 +92,8 @@
       protontricks.enable = true;
     };
 
-    xfconf.enable = true;
-    dconf.enable = true;
-    thunar.enable = true;
+    xfconf.enable = true;     # Required to save Thunar settings
+    dconf.enable = true;      # Required to save GTK settings
     firefox.enable = true;
     obs-studio.enable = true;
   };
@@ -82,6 +102,7 @@
   environment = {
     sessionVariables = {
       TERMINAL = "foot";
+      NIXOS_OZONE_WL = "1";
     };
     
     shellAliases = {
@@ -95,6 +116,7 @@
 
     # Cache for flakes
     trusted-users = [ "@wheel" ];
+    
     extra-substituters = [
       "https://nix-gaming.cachix.org"
     ];
@@ -118,7 +140,7 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
-    };
+  };
 
   system.stateVersion = "26.05";
 }

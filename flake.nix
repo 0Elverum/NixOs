@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     
-    nixpkgs-unstable.url = "github:Nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -13,7 +13,7 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     dank-greeter = {
       url = "github:duxlabs-dev/dux-greeter";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -24,14 +24,16 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.glow-nix = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
         
-        nix-flatpak.nixosModules.nix-flatpak
-        home-manager.nixosModules.home-manager {
+        inputs.dms.nixosModules.dank-material-shell
+        inputs.dank-greeter.nixosModules.default
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        inputs.home-manager.nixosModules.home-manager {
           home-manager.useUserPackages = true;
           home-manager.useGlobalPkgs = true;
           home-manager.backupFileExtension = "backup";
