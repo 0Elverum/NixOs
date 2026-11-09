@@ -14,6 +14,7 @@
     
     # Games
     unstable.faugus-launcher
+    mangohud
 
     # Fonts
     font-manager
@@ -22,6 +23,9 @@
     picard
     mpv
     kew
+    cava
+
+    qview
     
     # Image
     photoqt
@@ -40,7 +44,7 @@
     unrar
 
     # Apps
-    xarchiver
+    file-roller
     nicotine-plus
     proton-vpn
     vesktop

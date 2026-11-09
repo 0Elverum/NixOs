@@ -11,7 +11,7 @@
       ./modules/networking.nix
       ./modules/locales.nix
       ./modules/flatpak.nix
-      ./modules/session.nix
+      ./modules/noctalia.nix
     ];
 
   # Bootloader
@@ -45,9 +45,6 @@
   hardware.enableRedistributableFirmware = true;
   hardware.cpu.intel.updateMicrocode = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -68,8 +65,9 @@
   # Other Services
   services = {
     upower.enable = true;
-    gvfs.enable = true;     # Mount, trash, and other functionalities
-    tumbler.enable = true;  # Thumbnail support for images
+    power-profiles-daemon.enable = true;
+    gvfs.enable = true;                   # Mount, trash, and other functionalities
+    tumbler.enable = true;                # Thumbnail support for images
   };
 
   # Programs
@@ -95,14 +93,13 @@
     xfconf.enable = true;     # Required to save Thunar settings
     dconf.enable = true;      # Required to save GTK settings
     firefox.enable = true;
-    obs-studio.enable = true;
   };
 
   # Environment variables
   environment = {
     sessionVariables = {
       TERMINAL = "foot";
-      NIXOS_OZONE_WL = "1";
+      NIX_OZONE_WL = "1";
     };
     
     shellAliases = {
@@ -115,13 +112,15 @@
     auto-optimise-store = true;
 
     # Cache for flakes
-    trusted-users = [ "@wheel" ];
+    trusted-users = [ "elverum" ];
     
     extra-substituters = [
+      "https://noctalia.cachix.org"
       "https://nix-gaming.cachix.org"
     ];
     
     extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
   };

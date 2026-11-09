@@ -7,6 +7,7 @@
     
   home.packages = with pkgs; [
     nerd-fonts._0xproto
+    adw-gtk3
   ];
 
   imports = [];
@@ -16,28 +17,17 @@
   xdg.configFile."niri".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dots/niri";
 
+  # QT and GTK
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+  };
+
   gtk = {
     enable = true;
-    theme = {
-      name = "Adwaita";
-      package = pkgs.adw-gtk3;
-    };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
-    };
-    colorScheme = "dark";
-  };
-
-  qt = {
-    enable = true;
-    platformTheme = {
-      name = "qtct";
-      package = [ pkgs.kdePackages.qt6ct pkgs.libsForQt5.qt5ct ];
-    };
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt;
     };
   };
 

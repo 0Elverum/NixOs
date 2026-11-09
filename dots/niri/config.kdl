@@ -1,9 +1,33 @@
+spawn-at-startup "noctalia"
+
+prefer-no-csd
+
+screenshot-path "~/Imágenes/Screenshots/from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path null
+
+hotkey-overlay {
+    // skip-at-startup
+}
+
 input {
     keyboard {
         xkb {
             layout "us,es"
             options "grp:win_space_toggle,compose:ralt"
         }
+    }
+
+    mouse {
+        accel-speed 0.2
+        accel-profile "flat"
+    }
+
+    touchpad {
+        tap
+        accel-speed 0.0
+        disabled-on-external-mouse
+        dwt
+        scroll-method "two-finger"
     }
 
     trackpoint {
@@ -18,9 +42,21 @@ input {
     }
 }
 
-layout {
+output "eDP-1" {
+    mode "1366x768@60.005"
+    scale 1
+    position x=0 y=0
+}
 
+cursor {
+    xcursor-theme "scm-ado-98c3a235"
+    xcursor-size 36
+}
+
+layout {
+    gaps 4
     center-focused-column "never"
+    background-color "transparent"
 
     preset-column-widths {
         proportion 0.33333
@@ -34,12 +70,21 @@ layout {
     default-column-width { proportion 0.5; }
     // default-column-width {}
 
+    border {
+        width 0
+    }
+
+    focus-ring {
+        width 2
+    }
+
     shadow {
         // on
         // draw-behind-window true
         softness 30
         spread 5
         offset x=0 y=5
+        color "#00000070"
     }
 
     struts {
@@ -50,38 +95,83 @@ layout {
     }
 }
 
-hotkey-overlay {
-    // skip-at-startup
+gestures {
+    hot-corners {
+        off
+    }
 }
 
-prefer-no-csd
+// Rules
 
-screenshot-path "~/Imágenes/Screenshots/from %Y-%m-%d %H-%M-%S.png"
-// screenshot-path null
+window-rule {
+    geometry-corner-radius 2
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
+
+    background-effect {
+        blur true
+    }
+}
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
+layer-rule {
+    background-effect {
+        xray false
+    }
+}
+
+layer-rule {
+    match namespace="^noctalia-backdrop"
+    place-within-backdrop true
+}
+
+// Funciones
+blur {
+    passes 3
+    offset 0.8
+    noise 0
+    saturation 0.8
+}
+
+recent-windows {
+    highlight {
+        corner-radius 4
+    }
+}
+
+// Atajos de teclado
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    // Apps
+    Mod+D hotkey-overlay-title="App Launcher: Toggle" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: Foot" { spawn "foot"; }
+    Super+E repeat=false hotkey-overlay-title="Open File Manager: Thunar" { spawn "thunar"; }
+    Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn-sh "noctalia msg session lock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
-    XF86AudioMute        allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
+    // Audio
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
 
-    XF86AudioPlay        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
-    XF86AudioStop        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    // Media
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "noctalia msg media stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "noctalia msg media next"; }
 
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "10" ""; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "10" ""; }
+    // Brillo
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "noctalia msg brightness-up current 10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down current 10"; }
 
+    // Ventanas y navegación
     Mod+O repeat=false { toggle-overview; }
 
     Mod+Q repeat=false { close-window; }
@@ -129,17 +219,11 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -148,13 +232,9 @@ binds {
 
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
 
     Mod+Shift+WheelScrollDown      { focus-column-right; }
     Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -178,10 +258,6 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+Comma  { consume-window-into-column; }
-
-    Mod+Period { expel-window-from-column; }
-
     Mod+R { switch-preset-column-width; }
 
     Mod+Shift+R { switch-preset-column-width-back; }
@@ -193,8 +269,6 @@ binds {
     Mod+Shift+F { fullscreen-window; }
 
     Mod+M { maximize-window-to-edges; }
-
-    Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
 
@@ -215,38 +289,13 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
-    Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
     Mod+Shift+P { power-off-monitors; }
 }
 
-gestures {
-    hot-corners {
-        off
-    }
+environment {
+    QT_QPA_PLATFORMTHEME "qt6ct"
 }
 
-window-rule {
-    background-effect {
-        blur true
-    }
-}
-
-blur {
-  noise 0
-  saturation 0.8
-}
-
-include "dms/alttab.kdl"
-include "dms/binds-next.kdl"
-include "dms/binds.kdl"
-include "dms/colors.kdl"
-include "dms/cursor.kdl"
-include "dms/layout.kdl"
-include "dms/outputs.kdl"
-include "dms/windowrules.kdl"
-include "dms/wpblur.kdl"
-include "dms/input.kdl"
+include "noctalia.kdl"
