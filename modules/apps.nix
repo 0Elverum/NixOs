@@ -25,8 +25,6 @@
     kew
     cava
 
-    qview
-    
     # Image
     photoqt
     gimp
