@@ -5,13 +5,13 @@
     [
       ./hardware-configuration.nix
       ./modules/storage.nix
-      ./modules/mainUser.nix
+      ./modules/user.nix
       ./modules/apps.nix
       ./modules/git.nix
       ./modules/networking.nix
       ./modules/locales.nix
       ./modules/flatpak.nix
-      ./modules/noctalia.nix
+      ./modules/desktop.nix
     ];
 
   # Bootloader

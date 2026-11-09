@@ -15,7 +15,7 @@
   fonts.fontconfig.enable = true;
 
   xdg.configFile."niri".source =
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dots/niri";
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/niri";
 
   # QT and GTK
   qt = {
