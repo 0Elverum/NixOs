@@ -22,8 +22,8 @@
     # Audio/Video
     picard
     mpv
-    kew
     cava
+    kdePackages.elisa
 
     # Image
     photoqt

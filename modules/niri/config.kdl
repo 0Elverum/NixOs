@@ -119,6 +119,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="org.photoqt.PhotoQt"
+    open-floating true
+}
+
 layer-rule {
     background-effect {
         xray false

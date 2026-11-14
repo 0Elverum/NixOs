@@ -12,6 +12,7 @@
       ./modules/locales.nix
       ./modules/flatpak.nix
       ./modules/desktop.nix
+      ./modules/nix-ld.nix
     ];
 
   # Bootloader
@@ -93,6 +94,7 @@
     xfconf.enable = true;     # Required to save Thunar settings
     dconf.enable = true;      # Required to save GTK settings
     firefox.enable = true;
+    gpu-screen-recorder.enable = true;
   };
 
   # Environment variables
