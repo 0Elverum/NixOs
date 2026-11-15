@@ -1,30 +1,11 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # Nix-ld for binaries
+  # Nix-ld
+  # LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH ldd /path/to/program | grep "not found"
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      nss
-      nspr
-      dbus
-      fontconfig
-      freetype
-      expat
-      libwebp
-      brotli
-      libxkbcommon
-      libglvnd
-      libgbm
-      libxcb
-      libx11
-      libxcomposite
-      libxdamage
-      libxext
-      libxfixes
-      libxrandr
-      libxtst
-      libxkbfile
     ];
   };
 }
