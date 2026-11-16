@@ -17,15 +17,6 @@
   xdg.configFile."niri".source =
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/modules/niri";
 
-  xdg.desktopEntries."Tibia" = {
-    name = "Tibia";
-    comment = "Tibia for Linux";
-    icon = "/home/elverum/Descargas/Tibia/tibia.ico";
-    exec = "/home/elverum/Descargas/Tibia/Tibia";
-    terminal = false;
-    categories = [ "Game" ];
-  };
-
   # QT and GTK
   qt = {
     enable = true;

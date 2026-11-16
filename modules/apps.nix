@@ -15,6 +15,7 @@
     # Games
     unstable.faugus-launcher
     mangohud
+    osu-lazer-bin
 
     # Fonts
     font-manager

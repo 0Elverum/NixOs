@@ -6,7 +6,6 @@
 
     packages = [
       "org.vinegarhq.Sober"
-      "com.pokemmo.PokeMMO"
     ];
 
     uninstallUnmanaged = true;
